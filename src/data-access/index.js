@@ -2,7 +2,7 @@
 // Import URL Model and inject it to makeUrlDb
 
 import makeUrlDb from "./url-db.js";
-import Url from "./Url.js";
+import UrlDb from "./Url.js";
 
 import mongoose from 'mongoose';
 
@@ -11,4 +11,6 @@ mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopolo
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-const urlDbAccess = makeUrlDb({ Url })
+const urlDbAccess = makeUrlDb({ UrlDb })
+
+export default urlDbAccess
