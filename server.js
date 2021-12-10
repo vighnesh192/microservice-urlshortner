@@ -3,6 +3,9 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
+import { getUrlController, postUrlController } from './src/controllers/index.js';
+import makeExpressCallback from './src/express-callback/express-callback.js';
+
 // Basic Configuration
 const port = process.env.PORT || 3000;
 
@@ -18,6 +21,9 @@ app.get('/', function(req, res) {
 app.get('/api/hello', function(req, res) {
   res.json({ greeting: 'hello API' });
 });
+
+app.get('/api/shorturl/:id', makeExpressCallback(getUrlController))
+app.post('/api/shorturl', makeExpressCallback(postUrlController))
 
 app.listen(port, function() {
   console.log(`Listening on port ${port}`);
