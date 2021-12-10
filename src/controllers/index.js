@@ -3,6 +3,6 @@ import makeGetUrlController from './get-url.js';
 import makePostUrlController from "./post-url.js";
 
 const getUrlController = makeGetUrlController({ getUrl });
-const posttUrlController = makePostUrlController({ postUrl });
+const postUrlController = makePostUrlController({ postUrl });
 
-export { getUrlController, posttUrlController }
+export { getUrlController, postUrlController }
