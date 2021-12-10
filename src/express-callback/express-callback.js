@@ -7,6 +7,6 @@ module.exports = function makeExpressCallback(controller) {
 
         controller(httpRequest)
             .then(httpResponse => res.json(httpResponse.body))
-            .catch(error => res.status(500).send({error}))
+            .catch(e => res.status(500).send({error: e.message}))
     }
 }
