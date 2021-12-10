@@ -8,7 +8,7 @@ export default function makeUrlDb({ UrlDb }) {
     //Create insert, findbyid, etc methods and return frozen object
     async function findById({ id }) {
         const url = await UrlDb.findById(id).exec()
-        const { original_url, _id } = url || {};
+        const { _id } = url || {};
         // Return an object with properties matching the entity
         return { original_url, short_url: _id } 
     }
@@ -16,7 +16,7 @@ export default function makeUrlDb({ UrlDb }) {
     async function findOne({ original_url }) {
         const url = await UrlDb.findOne(original_url).exec()
         // Add || {} bc destructuring fails if url is undefined or null
-        const { original_url, _id } = url || {};
+        const { _id } = url || {};
         return { original_url, short_url: _id } 
     }
 

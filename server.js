@@ -1,6 +1,6 @@
-require('dotenv').config();
-const express = require('express');
-const cors = require('cors');
+import express from 'express';
+import cors from 'cors';
+
 const app = express();
 
 import { getUrlController, postUrlController } from './src/controllers/index.js';
