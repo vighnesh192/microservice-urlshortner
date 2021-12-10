@@ -4,7 +4,7 @@ export default function makePostUrl({ urlDbAccess }) {
     // We'll get urlInfo from controller
     return async function postUrl(urlInfo) {
         const validatedUrl = makeShorturl(urlInfo)
-        const checkIfPresent = urlDbAccess.findOne({ originalUrl: validatedUrl.getOriginalUrl() })
+        const checkIfPresent = await urlDbAccess.findOne({ originalUrl: validatedUrl.getOriginalUrl() })
         if(!checkIfPresent){
             return urlDbAccess.insert({ originalUrl: validatedUrl.getOriginalUrl() })
         }
