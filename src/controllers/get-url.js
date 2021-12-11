@@ -1,9 +1,12 @@
 export default function makeGetUrlController({ getUrl }) {
     return async function getUrlController(httpRequest) {
         try {
-            const url = getUrl({ id: httpRequest.params.id })
+            const url = await getUrl({ id: httpRequest.params.id })
             return {
-                body: url
+                body: {
+                    ...url,
+                    method: "GET"
+                }
             }
         } catch (e) {
             throw new Error(e.message);        
