@@ -4,7 +4,7 @@ export default function makeGetUrl({ urlDbAccess }) {
         if(!id) {
             throw new Error('Please provide an id')
         }
-        const { original_url, short_url } = await urlDbAccess.findById(id);
+        const { original_url, short_url } = await urlDbAccess.findById({ id });
         return { original_url, short_url };
     }
 }
