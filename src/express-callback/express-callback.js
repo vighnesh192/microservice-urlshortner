@@ -1,12 +1,15 @@
 export default function makeExpressCallback(controller) {
     return (req, res) => {
         const httpRequest = {
-            body: req.body,
+            body: req.body.url,
             params: req.params
         }
 
         controller(httpRequest)
-            .then(httpResponse => res.json(httpResponse.body))
-            .catch(e => res.status(500).send({error: e.message}))
+            .then(({ body }) => {
+                body.method == "GET" ? res.redirect("https://"+body.original_url) : res.json(body);
+            })
+            .catch(e => {
+                res.status(500).send({error: e})})
     }
 }
