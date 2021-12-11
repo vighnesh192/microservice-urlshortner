@@ -7,7 +7,7 @@ export default function makePostUrlController({ postUrl }) {
             }
         }
         catch(e) {
-            throw new Error(e.message);
+            throw e
         }
     }
 }
