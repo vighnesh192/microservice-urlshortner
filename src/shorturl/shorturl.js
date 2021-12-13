@@ -1,15 +1,15 @@
 // Injecting validateUrl so that this entity doesn't directly upon Node's dns module
 export default function buildMakeShorturl({ validateUrl }) {
-    return function makeShorturl({ original_url, short_url }) {
+    return async function makeShorturl({ original_url, short_url }) {
+        original_url = original_url.replace('https://', '')
         try {
-            original_url = original_url.replace('https://', '')
-            const validatedUrl = validateUrl(original_url);
-            return Object.freeze({
-                getOriginalUrl: () => original_url,
-                getShortUrl: () => short_url
-            })
+            await validateUrl(original_url);
         } catch (error) {
-            throw new Error(error);
+            throw error;
         }
+        return Object.freeze({
+            getOriginalUrl: () => original_url,
+            getShortUrl: () => short_url
+        })
     }
 }

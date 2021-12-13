@@ -2,11 +2,13 @@ import buildMakeShorturl from "./shorturl.js";
 import dns from 'dns';
 
 const validateUrl = (url) => {
-    dns.lookup(url, (err, value) => {
-        if(err) {
-            throw new Error(err)
-        }
-        return value;
+    return new Promise((resolve, reject) => {
+        dns.lookup(url, (err, value) => {
+            if(err) {
+                reject('invalid url');
+            }
+            resolve(value);
+        })
     })
 }
 
