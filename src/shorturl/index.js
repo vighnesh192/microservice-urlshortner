@@ -5,6 +5,7 @@ const validateUrl = (url) => {
     return new Promise((resolve, reject) => {
         dns.lookup(url, (err, value) => {
             if(err) {
+                console.log("DNS Error", err)
                 reject('invalid url');
             }
             resolve(value);
