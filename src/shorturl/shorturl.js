@@ -3,9 +3,11 @@ export default function buildMakeShorturl({ validateUrl }) {
     return async function makeShorturl({ original_url, short_url }) {
         original_url = original_url.replace('https://', '')
         original_url = original_url.replace('ftp:/', '')
-        console.log(original_url.indexOf(':/'))
+        let clone = original_url
+        clone.splice(clone.indexOf('/'));
+        console.log(clone+" && "+original_url)
         try {
-            await validateUrl(original_url);
+            await validateUrl(clone);
         } catch (error) {
             throw error;
         }
