@@ -9,6 +9,7 @@ export default function buildMakeShorturl({ validateUrl }) {
         try {
             await validateUrl(clone);
         } catch (error) {
+            console.log("DNS ERROR:-", error)
             throw error;
         }
         return Object.freeze({
