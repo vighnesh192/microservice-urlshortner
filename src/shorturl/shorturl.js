@@ -5,7 +5,8 @@ export default function buildMakeShorturl({ validateUrl }) {
         original_url = original_url.replace('ftp:/', '')
         let clone = original_url
         console.log(clone+" && "+original_url)
-        clone.splice(clone.indexOf('/'));
+        console.log(clone.indexOf('/'))
+        clone = clone.slice(0, clone.indexOf('/'));
         console.log(clone+" && "+original_url)
         try {
             await validateUrl(clone);
