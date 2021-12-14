@@ -6,7 +6,9 @@ export default function buildMakeShorturl({ validateUrl }) {
         let clone = original_url
         console.log(clone+" && "+original_url)
         console.log(clone.indexOf('/'))
-        clone = clone.slice(0, clone.indexOf('/'));
+        if(clone.indexOf('/') >= 0) {
+            clone = clone.slice(0, clone.indexOf('/'));
+        }
         console.log(clone+" && "+original_url)
         try {
             await validateUrl(clone);
