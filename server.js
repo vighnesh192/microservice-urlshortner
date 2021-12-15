@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import connectDB from './src/data-access/connection.js';
 
 const app = express();
 
@@ -26,6 +27,7 @@ app.get('/api/hello', function(req, res) {
 app.get('/api/shorturl/:id', makeExpressCallback(getUrlController))
 app.post('/api/shorturl', makeExpressCallback(postUrlController))
 
-app.listen(port, function() {
-  console.log(`Listening on port ${port}`);
-});
+// app.listen(port, function() {
+//   console.log(`Listening on port ${port}`);
+// });
+connectDB(app);
