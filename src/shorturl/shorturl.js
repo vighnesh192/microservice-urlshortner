@@ -16,7 +16,7 @@ export default function buildMakeShorturl({ validateUrl }) {
         console.log(clone+" && "+original_url)
         try {
             // await validateUrl(clone);
-            await validateUrl(original_url);
+            await validateUrl(nodeUrl.hostname);
         } catch (error) {
             console.log("DNS ERROR:-", error)
             throw error;
