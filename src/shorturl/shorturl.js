@@ -1,7 +1,8 @@
 // Injecting validateUrl so that this entity doesn't directly upon Node's dns module
 export default function buildMakeShorturl({ validateUrl }) {
     return async function makeShorturl({ original_url, short_url }) {
-        if(!(original_url.includes(':/') && (original_url.includes('https') || original_url.includes('http')))) {
+        let nodeUrl = new URL(original_url);
+        if (nodeUrl.protocol === "ftp:") {
             throw 'invalid url';
         }
         original_url = original_url.replace('https://', '')
