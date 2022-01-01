@@ -5,15 +5,15 @@ export default function buildMakeShorturl({ validateUrl }) {
         if (nodeUrl.protocol === "ftp:") {
             throw 'invalid url';
         }
-        original_url = original_url.replace('https://', '')
-        original_url = original_url.replace('ftp:/', '')
-        let clone = original_url
-        console.log(clone+" && "+original_url)
-        console.log(clone.indexOf('/'))
-        if(clone.indexOf('/') >= 0) {
-            clone = clone.slice(0, clone.indexOf('/'));
-        }
-        console.log(clone+" && "+original_url)
+        // original_url = original_url.replace('https://', '')
+        // original_url = original_url.replace('ftp:/', '')
+        // let clone = original_url
+        // console.log(clone+" && "+original_url)
+        // console.log(clone.indexOf('/'))
+        // if(clone.indexOf('/') >= 0) {
+        //     clone = clone.slice(0, clone.indexOf('/'));
+        // }
+        // console.log(clone+" && "+original_url)
         try {
             // await validateUrl(clone);
             await validateUrl(nodeUrl.hostname);
