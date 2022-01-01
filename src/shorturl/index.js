@@ -4,7 +4,11 @@ import dns from 'dns';
 
 const validateUrl = (url) => {
     return new Promise((resolve, reject) => {
-        dns.lookup(url, (err, value) => {
+        let nodeUrl = new URL(url);
+        if (nodeUrl.protocol === "ftp:") {
+            reject('Invalid URL');
+        }
+        dns.lookup(nodeUrl.hostname, (err, value) => {
             if(err) {
                 console.log("DNS Error", err)
                 reject('Invalid URL');
