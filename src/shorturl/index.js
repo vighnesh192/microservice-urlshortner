@@ -7,7 +7,7 @@ const validateUrl = (url) => {
         dns.lookup(url, (err, value) => {
             if(err) {
                 console.log("DNS Error", err)
-                reject('invalid url');
+                reject('Invalid URL');
             }
             resolve(value);
         })

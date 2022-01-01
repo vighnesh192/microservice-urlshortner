@@ -3,7 +3,7 @@ export default function buildMakeShorturl({ validateUrl }) {
     return async function makeShorturl({ original_url, short_url }) {
         let nodeUrl = new URL(original_url);
         if (nodeUrl.protocol === "ftp:") {
-            throw 'invalid url';
+            throw 'Invalid URL';
         }
         // original_url = original_url.replace('https://', '')
         // original_url = original_url.replace('ftp:/', '')
