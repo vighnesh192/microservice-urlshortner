@@ -7,7 +7,7 @@ export default function makeExpressCallback(controller) {
 
         controller(httpRequest)
             .then(({ body }) => {
-                body.method == "GET" ? res.redirect("https://"+body.original_url) : res.json(body);
+                body.method == "GET" ? res.redirect(body.original_url) : res.json(body);
             })
             .catch(e => {
                 console.log("EC Error:-", e);
